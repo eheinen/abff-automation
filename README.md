@@ -1,5 +1,8 @@
 # Animal Best Friend Forever - Java Automation
 
+Automation of Animal Best Friend Forever website:
+https://github.com/eheinen/animal-best-friend-forever
+
 ## About
 - Java 8
 - Maven
