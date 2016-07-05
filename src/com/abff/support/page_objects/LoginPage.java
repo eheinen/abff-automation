@@ -11,7 +11,6 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.abff.support.driver.AbstractDriver;
-import com.abff.support.driver.Driver;
 
 //Existem 3 tipos de Find no Selenium Support:
 // FindBy -> Pesquisa o elemento na tela de acordo com o tipo e o valor passado.
@@ -21,7 +20,7 @@ import com.abff.support.driver.Driver;
 public class LoginPage extends AbstractDriver {
 
 	public LoginPage() {
-		PageFactory.initElements(Driver.getInstance(), this);
+		PageFactory.initElements(driver, this);
 	}
 	
 	protected String title = "ABFF - Login";
@@ -64,13 +63,13 @@ public class LoginPage extends AbstractDriver {
 	
 	// PageObjects:
 	
-	protected IndexPage authenticate(String username, String password){
+	protected HomePage authenticate(String username, String password){
 		txtUsername.sendKeys(username);
 		txtPassword.sendKeys(password);
 		btnEntrar.click();
 		assertThat("Autenticação realizada com sucesso!", equalTo(waitForElementDisplayed(lblMessage).getText()));
 		assertThat("ABFF", equalTo(waitForTitle("ABFF")));
-		return new IndexPage();
+		return new HomePage();
 	}
 	
 	

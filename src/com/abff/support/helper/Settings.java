@@ -21,11 +21,11 @@ public class Settings {
 	private void loadProperties(String resourcePathName){
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
 		try{
-			resourcePathName = (Utils.isNullOrEmpty(resourcePathName) ? RESOURCE_NAME : resourcePathName);
+			resourcePathName = (MyUtils.isNullOrEmpty(resourcePathName) ? RESOURCE_NAME : resourcePathName);
 			InputStream resourceStream = loader.getResourceAsStream(resourcePathName);
 		    System.getProperties().load(resourceStream);
 		}catch (Exception e) {
-			new RuntimeException("Could not open the settings file.");
+			throw new RuntimeException("Could not open the settings file.");
 		}
 	}
 }

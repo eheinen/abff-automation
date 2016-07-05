@@ -4,8 +4,8 @@ Feature: Login
   So that, I can see the Index page
 
   @login @factory
-  Scenario: Authentication PageFactory
-    Given I am on LoginPage
+  Scenario: Authenticate with PageFactory
+    Given I am on the LoginPage
     When I type "admin" in username field
     And I type "admin" in password field
     And I click on submit button
@@ -13,7 +13,7 @@ Feature: Login
     And I should be able to be redirected to IndexPage
 
     @login @object
-    Scenario: Authentication PageObject
-    Given I am on LoginPage
+    Scenario: Authenticate with PageObject
+    Given I am on the LoginPage
     When I authenticate on LoginPage
     Then I should be able to be redirected to IndexPage

@@ -1,11 +1,17 @@
 package com.abff.support.driver;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public abstract class AbstractWait {
 
 	private static final long POOL = 100;
-	private static final int TIMEOUT = 10;;
+	private static final int TIMEOUT = 10;
+	private static WebDriver driver = null;
+	
+	public AbstractWait(){
+		driver = Driver.getInstance();
+	}
 	
 	/**
 	 * Responsible for pause the Thread in execution
@@ -40,11 +46,11 @@ public abstract class AbstractWait {
 	 */
 	public static String waitForTitle(String title){	
 		int timeout = TIMEOUT;
-		while(!Driver.getInstance().getTitle().equals(title) || timeout > 0){
+		while(!driver.getTitle().equals(title) || timeout > 0){
 			pause(POOL);
 			timeout--;
 		}
-		return Driver.getInstance().getTitle();
+		return driver.getTitle();
 	}
 	
 }

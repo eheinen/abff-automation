@@ -10,18 +10,24 @@ import org.openqa.selenium.remote.Augmenter;
 
 public abstract class AbstractDriver extends AbstractWait {
 	
+	protected static WebDriver driver = null;
+	
+	public AbstractDriver(){
+		driver = Driver.getInstance();
+	}
+	
 	/**
 	 * Responsible for close the driver and every window that was open.
 	 */
 	public static void quit() {
-		Driver.getInstance().quit();
+		driver.quit();
 	}
 
 	/**
 	 * Responsible for close the driver and every window that was open.
 	 */
 	public static void close() {
-		Driver.getInstance().close();
+		driver.close();
 	}
 	
 	/**
@@ -33,7 +39,7 @@ public abstract class AbstractDriver extends AbstractWait {
 	 * @param partUrl Part of url
 	 */
 	public static WebDriver openPart(String partUrl){
-		Driver.getInstance().navigate().to(System.getProperty("application") + partUrl);
+		driver.navigate().to(System.getProperty("application") + partUrl);
 		return Driver.getInstance();
 	}
 	
@@ -42,7 +48,7 @@ public abstract class AbstractDriver extends AbstractWait {
 	 * @return Title
 	 */
 	public static String getTitle(){
-		return Driver.getInstance().getTitle();
+		return driver.getTitle();
 	}
 	
 	/**
@@ -50,11 +56,11 @@ public abstract class AbstractDriver extends AbstractWait {
 	 * @param url
 	 */
 	public static void open(String url){
-		Driver.getInstance().navigate().to(url);
+		driver.navigate().to(url);
 	}
 	
 	public static void takeScreenShot(String screenshotPath, String fileName){
-		WebDriver augmentedDriver = new Augmenter().augment(Driver.getInstance());
+		WebDriver augmentedDriver = new Augmenter().augment(driver);
         File scrFile = ((TakesScreenshot)augmentedDriver).
                             getScreenshotAs(OutputType.FILE);
         try {

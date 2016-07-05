@@ -1,4 +1,4 @@
-package com.abff.features.steps.steps_definition;
+package com.abff.features.steps;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -11,8 +11,8 @@ import cucumber.api.java.en.When;
 
 public class LoginSteps extends LoginPage {
 	
-	@Given("^I am on LoginPage$")
-	public void i_am_on_LoginPage() {
+	@Given("^I am on the LoginPage$")
+	public void i_am_on_the_LoginPage() {
 	    assertThat(title, equalTo(openPart("login.html").getTitle()));
 	}
 

@@ -1,4 +1,4 @@
-package com.abff.features.steps.hooks;
+package com.abff.features.hooks;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,7 +14,6 @@ public class Hooks extends AbstractDriver {
 	
 	@Before
 	public void before(){
-		Driver.getInstance();
 		open(System.getProperty("application"));
 	}
 	

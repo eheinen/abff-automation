@@ -42,7 +42,12 @@ public class Driver {
 	private static WebDriver getDriver() {
 		new Settings();
 		WebDriver driver = null;
-		switch (System.getProperty("browser").toUpperCase()) {
+		String browser = System.getProperty("browser");
+		
+		if(browser == null)
+			throw new RuntimeException("Could not read browser property on settings file.");
+			
+		switch (browser.toUpperCase()) {
 		case "CHROME":
 			// Estou setando abaixo o local onde o meu ChromeDriver se encontra,
 			// ou seja, dentro do diretório do meu projeto.
@@ -66,7 +71,7 @@ public class Driver {
 			driver = new OperaDriver();
 			break;
 		default:
-			throw new RuntimeException("Please, informe a browser driver inside settings.properties");
+			throw new RuntimeException("Please, inform a browser driver inside settings.properties");
 		}
 		
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
