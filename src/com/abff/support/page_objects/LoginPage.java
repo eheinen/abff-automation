@@ -29,40 +29,63 @@ public class LoginPage extends AbstractDriver {
 	
 	// FindBy com parâmetros simplificados
 	@FindBy(id = "txt-usuario") 
-	protected WebElement txtUsername;
+	private WebElement txtUsername;
 	
 	// FindAll retornará o elmento senha se o campo senha possuir o name senha ou id txt-senha
 	@FindAll({
 		@FindBy(name = "senha"), 
 		@FindBy(id = "txt-senha")
 	})
-	protected WebElement txtPassword;
+	private WebElement txtPassword;
 	
 	// FindBys retornará o elemento btn-entrar que esteja contido dentro do elemento container-login
 	@FindBys({
 		@FindBy(how=How.CLASS_NAME, using="container-login"),
 		@FindBy(how=How.ID, using="btn-entrar")
 	})
-	protected WebElement btnEntrar;
+	private WebElement btnEntrar;
 	
 	// É possível utilizar os parâmetros simplificados ou mais detalhados, pela visibilidade é preferível utilizar o
 	// modo simplificado.
 	@FindBy(xpath = "//*[@id=\"btn-limpar\"]")
-	protected WebElement btnLimpar;
+	private WebElement btnLimpar;
 	
 	// Dê preferência na utilização de elementos que possuam IDs, pois os elementos que possuem IDs diferente de outros atributos,
 	// é único para cada elemento na tela. Caso o elemento não possua ID, procure usar a melhor combinação de Finds para encontrar
 	// apenas o elemento que deseja.
 	@FindBy(id = "lnk-cadastrar-usuario")
-	protected WebElement lnkCadastrar;
+	private WebElement lnkCadastrar;
 	
 	@FindBy(id = "message-text")
-	protected WebElement lblMessage;
+	private WebElement lblMessage;
 	
+	public WebElement getTxtUsername() {
+		return txtUsername;
+	}
+
+	public WebElement getTxtPassword() {
+		return txtPassword;
+	}
+
+	public WebElement getBtnEntrar() {
+		return btnEntrar;
+	}
+
+	public WebElement getBtnLimpar() {
+		return btnLimpar;
+	}
+
+	public WebElement getLnkCadastrar() {
+		return lnkCadastrar;
+	}
+
+	public WebElement getLblMessage() {
+		return lblMessage;
+	}
 	
 	
 	// PageObjects:
-	
+
 	protected HomePage authenticate(String username, String password){
 		txtUsername.sendKeys(username);
 		txtPassword.sendKeys(password);

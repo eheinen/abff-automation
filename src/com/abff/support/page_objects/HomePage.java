@@ -23,16 +23,27 @@ public class HomePage extends AbstractDriver {
 	protected String title = "ABFF";
 	
 	@FindBy(xpath = "//*[@data-i18n='menu-animal']")
-	protected WebElement mn_animals;
+	private WebElement mnAnimals;
 	
 	@FindBy(id = "lnk-cadastrar-animais")
-	protected WebElement mni_cadastrar_animais;
+	private WebElement lnkCadastrarAnimais;
 	
 	@FindBy(id = "lnk-visualizar-animais")
-	protected WebElement mni_visualizar_animais;
+	private WebElement lnkVisualizarAnimais;
 	
-	
-	
+
+	public WebElement getMnAnimals() {
+		return mnAnimals;
+	}
+
+	public WebElement getLnkCadastrarAnimais() {
+		return lnkCadastrarAnimais;
+	}
+
+	public WebElement getLnkVisualizarAnimais() {
+		return lnkVisualizarAnimais;
+	}
+
 	/**
 	 * Responsible for get the element by menu passed by parameter
 	 * @param menu Element menu
@@ -40,7 +51,7 @@ public class HomePage extends AbstractDriver {
 	 */
 	private WebElement getMenuElement(String menu){
 		if(menu.toUpperCase().equals("ANIMALS"))
-			return mn_animals;
+			return mnAnimals;
 		return null;
 	}
 	
@@ -63,8 +74,8 @@ public class HomePage extends AbstractDriver {
 	 */
 	protected HomePage checkMenuItemIsDisplayed(String menu, boolean isDisplayed){
 		if(menu.toUpperCase().equals("ANIMALS")){
-			assertThat(mni_cadastrar_animais.isDisplayed(), equalTo(isDisplayed));
-			assertThat(mni_visualizar_animais.isDisplayed(), equalTo(isDisplayed));
+			assertThat(lnkCadastrarAnimais.isDisplayed(), equalTo(isDisplayed));
+			assertThat(lnkVisualizarAnimais.isDisplayed(), equalTo(isDisplayed));
 		}
 		return this;
 	}

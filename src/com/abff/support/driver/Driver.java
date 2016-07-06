@@ -55,8 +55,9 @@ public class Driver {
 			driver = new ChromeDriver();
 			break;
 		case "FIREFOX":
-			DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-			driver = new FirefoxDriver(capabilities);
+			//DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+			
+			driver = new FirefoxDriver();
 			break;
 		case "IE":
 			driver = new InternetExplorerDriver();

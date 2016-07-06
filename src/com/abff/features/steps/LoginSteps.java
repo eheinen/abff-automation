@@ -18,17 +18,17 @@ public class LoginSteps extends LoginPage {
 
 	@When("^I type \"([^\"]*)\" in username field$")
 	public void i_type_in_username_field(String username) {
-	    txtUsername.sendKeys(username);
+	    getTxtUsername().sendKeys(username);
 	}
 
 	@When("^I type \"([^\"]*)\" in password field$")
 	public void i_type_in_password_field(String password) {
-		txtPassword.sendKeys(password);
+		getTxtPassword().sendKeys(password);
 	}
 	
 	@When("^I click on submit button$")
 	public void i_click_on_submit_button() {
-	    btnEntrar.click();
+	    getBtnEntrar().click();
 	}
 	
 	@When("^I authenticate on LoginPage$")
@@ -38,7 +38,7 @@ public class LoginSteps extends LoginPage {
 	
 	@Then("^I should be able to see a message$")
 	public void i_should_be_able_to_see_a_message() {
-		assertThat("Autenticação realizada com sucesso!", equalTo(waitForElementDisplayed(lblMessage).getText()));
+		assertThat("Autenticação realizada com sucesso!", equalTo(waitForElementDisplayed(getLblMessage()).getText()));
 	}
 
 	@Then("^I should be able to be redirected to IndexPage$")
